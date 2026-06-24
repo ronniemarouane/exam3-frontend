@@ -1,0 +1,278 @@
+/* ========================================
+   FRAGRANCEBERG — style.css
+   Global styles shared by all pages
+   ======================================== */
+
+/* === CSS VARIABLES === */
+:root {
+    --color-black: #0a0a0a;
+    --color-black-soft: #111111;
+    --color-green: #1B5E20;
+    --color-green-hover: #2E7D32;
+    --color-green-light: #4ade80;
+    --color-white: #f0f0f0;
+    --color-white-soft: #cccccc;
+    --color-gray: #888888;
+
+    --font-main: 'Segoe UI', sans-serif;
+
+    --transition: all 0.3s ease;
+}
+
+/* === RESET & BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* === NAVBAR === */
+.navbar-brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-white) !important;
+    letter-spacing: 0.05em;
+}
+
+.navbar-brand span {
+    color: var(--color-green-light);
+}
+
+.nav-link {
+    color: var(--color-white-soft) !important;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-green-light) !important;
+}
+
+.navbar-custom {
+    background-color: var(--color-black-soft);
+    border-bottom: 1px solid var(--color-green);
+    padding: 1rem 0;
+}
+
+/* === BUTTONS === */
+.btn-brand {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.btn-brand:hover {
+    background-color: var(--color-green-hover);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-outline-brand {
+    background-color: transparent;
+    color: var(--color-green-light);
+    border: 1px solid var(--color-green);
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.btn-outline-brand:hover {
+    background-color: var(--color-green);
+    color: var(--color-white);
+}
+
+/* === SECTION TITLES === */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.section-title span {
+    color: var(--color-green-light);
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    margin-bottom: 3rem;
+}
+
+.section-divider {
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-green);
+    margin: 1rem 0 2rem 0;
+}
+
+/* === CARDS === */
+.card-dark {
+    background-color: var(--color-black-soft);
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.card-dark:hover {
+    border-color: var(--color-green);
+    transform: translateY(-4px);
+}
+
+/* === FOOTER === */
+.footer-custom {
+    background-color: var(--color-black-soft);
+    border-top: 1px solid var(--color-green);
+    padding: 2rem 0;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    text-align: center;
+}
+
+.footer-custom span {
+    color: var(--color-green-light);
+}
+
+/* === HERO SECTIONS === */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-white);
+    line-height: 1.2;
+}
+
+.hero-title span {
+    color: var(--color-green-light);
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-green-light);
+    margin-bottom: 1rem;
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--color-white-soft);
+    max-width: 550px;
+    margin: 1.5rem auto 2.5rem;
+}
+
+/* === SCROLL ANIMATION === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-up-delay {
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease 0.6s forwards;
+    opacity: 0;
+}
+
+/* === SCROLL ARROW (index.html transition) === */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--color-green-light);
+    font-size: 2rem;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
