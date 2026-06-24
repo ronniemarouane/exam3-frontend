@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fragranceberg — Home</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar-custom {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #1B5E20;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-brand-text span {
+            color: #4ade80;
+        }
+
+        .nav-link {
+            color: #aaaaaa !important;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #4ade80 !important;
+        }
+
+        .navbar-toggler {
+            border-color: #1B5E20;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%284, 222, 128, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ── HERO ── */
+        .hero-home {
+            min-height: 100vh;
+            background-image: url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.3) 0%,
+                    rgba(0, 0, 0, 0.65) 50%,
+                    rgba(10, 10, 10, 1) 100%);
+            z-index: 1;
+        }
+
+        .hero-home-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: #f0f0f0;
+            line-height: 1.05;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-main-title span {
+            color: #4ade80;
+        }
+
+        .hero-tagline-text {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #4a7c59;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-divider {
+            width: 40px;
+            height: 1px;
+            background: #1B5E20;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero-desc-text {
+            font-size: 1rem;
+            color: #aaaaaa;
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-brand {
+            background: #1B5E20;
+            color: #f0f0f0;
+            border: 1px solid #2E7D32;
+            padding: 0.85rem 2.2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary-brand:hover {
+            background: #2E7D32;
+            color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(27, 94, 32, 0.4);
+        }
+
+        .btn-ghost-brand {
+            background: transparent;
+            color: #f0f0f0;
+            border: 1px solid #333;
+            padding: 0.85rem 2.2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-ghost-brand:hover {
+            border-color: #4ade80;
+            color: #4ade80;
+        }
+
+        /* scroll arrow */
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            color: #4a7c59;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: fadePulse 2s ease infinite;
+        }
+
+        .hero-scroll-hint svg {
+            display: block;
+            margin: 6px auto 0;
+            width: 18px;
+            height: 18px;
+            animation: bounceDown 1.5s ease infinite;
+        }
+
+        @keyframes fadePulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(7px);
+            }
+        }
+
+        /* ── STORY SECTION ── */
+        .story-section {
+            padding: 7rem 0;
+            background: #0a0a0a;
+        }
+
+        .story-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .story-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #f0f0f0;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-heading span {
+            color: #4ade80;
+        }
+
+        .story-text {
+            font-size: 0.95rem;
+            color: #888888;
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+        }
+
+        .story-text strong {
+            color: #cccccc;
+        }
+
+        .story-stat {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        .story-stat:hover {
+            border-color: #1B5E20;
+        }
+
+        .story-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4ade80;
+            display: block;
+        }
+
+        .story-stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #666666;
+            margin-top: 0.3rem;
+        }
+
+        .story-image-block {
+            position: relative;
+            height: 100%;
+            min-height: 420px;
+        }
+
+        .story-image-block img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: brightness(0.85);
+        }
+
+        .story-image-badge {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -1.5rem;
+            background: #1B5E20;
+            color: #f0f0f0;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            line-height: 1.6;
+        }
+
+        .story-image-badge strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        /* ── FEATURED PRODUCTS ── */
+        .products-section {
+            padding: 7rem 0;
+            background: #0d0d0d;
+            border-top: 1px solid #111111;
+        }
+
+        .product-card {
+            background: #111111;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            border-color: #1B5E20;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: filter 0.35s ease;
+        }
+
+        .product-card:hover .product-card-img {
+            filter: brightness(1);
+        }
+
+        .product-card-body {
+            padding: 1.5rem;
+        }
+
+        .product-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-size: 0.82rem;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #f0f0f0;
+        }
+
+        .product-price span {
+            font-size: 0.8rem;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-add {
+            background: transparent;
+            border: 1px solid #1B5E20;
+            color: #4ade80;
+            padding: 0.5rem 1.1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add:hover {
+            background: #1B5E20;
+            color: #f0f0f0;
+        }
+
+        /* ── REVIEWS / CAROUSEL ── */
+        .reviews-section {
+            padding: 7rem 0;
+            background: #0a0a0a;
+            border-top: 1px solid #111111;
+        }
+
+        .review-card {
+            background: #111111;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 2.5rem;
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .review-stars {
+            color: #4ade80;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: #cccccc;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4ade80;
+        }
+
+        .review-location {
+            font-size: 0.75rem;
+            color: #444444;
+            margin-top: 0.2rem;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(0) brightness(0.5);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: #1B5E20;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        /* ── FOOTER ── */
+        .footer-main {
+            background: #080808;
+            border-top: 1px solid #1B5E20;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand-name span {
+            color: #4ade80;
+        }
+
+        .footer-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4a7c59;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            display: block;
+            font-size: 0.85rem;
+            color: #666666;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #4ade80;
+        }
+
+        .footer-col-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #f0f0f0;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #111111;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #333333;
+        }
+
+        .footer-bottom span {
+            color: #4ade80;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.15s;
+            opacity: 0;
+        }
+
+        .delay-2 {
+            animation-delay: 0.30s;
+            opacity: 0;
+        }
+
+        .delay-3 {
+            animation-delay: 0.45s;
+            opacity: 0;
+        }
+
+        .delay-4 {
+            animation-delay: 0.60s;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════
+       NAVBAR
+  ══════════════════════════ -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-text" href="home.html">
+                Fragrance<span>berg</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn-primary-brand" href="shop.html" style="padding:0.6rem 1.4rem; font-size:0.75rem;">
+                            Shop Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ══════════════════════════
+       HERO
+  ══════════════════════════ -->
+    <section class="hero-home" id="home">
+        <div class="hero-home-content">
+            <p class="hero-eyebrow fade-in-up delay-1">Luxury Fragrance · Since 2024</p>
+
+            <h1 class="hero-main-title fade-in-up delay-2">
+                Smell<br /><span>Illegally</span><br />Good.
+            </h1>
+
+            <p class="hero-tagline-text fade-in-up delay-3">Fragranceberg — The Chemistry of Scent</p>
+            <div class="hero-divider fade-in-up delay-3"></div>
+
+            <p class="hero-desc-text fade-in-up delay-4">
+                Born from the darkest chemistry and the boldest ambition.
+                We don't make perfumes — we engineer identities.
+            </p>
+
+            <div class="hero-cta-group fade-in-up delay-4">
+                <a href="shop.html" class="btn-primary-brand">Explore Collection</a>
+                <a href="about.html" class="btn-ghost-brand">Our Story</a>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════
+       STORY
+  ══════════════════════════ -->
+    <section class="story-section" id="story">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- TEXT SIDE -->
+                <div class="col-lg-6">
+                    <span class="story-label">Our Origin</span>
+                    <h2 class="story-heading">
+                        The <span>Chemistry</span><br />Behind the Scent
+                    </h2>
+                    <div class="section-divider"></div>
+                    <p class="story-text">
+                        Fragranceberg was born from an obsession — the same obsession that drives
+                        those who <strong>break every rule</strong> to create something pure.
+                        Inspired by the raw intensity of Breaking Bad, we built a fragrance brand
+                        that refuses to be ordinary.
+                    </p>
+                    <p class="story-text">
+                        Every bottle is a formula. Every scent is a statement.
+                        We don't follow trends — we <strong>engineer experiences</strong>
+                        that leave a mark long after you've left the room.
+                    </p>
+                    <a href="about.html" class="btn-ghost-brand mt-3" style="display:inline-block;">
+                        Read Full Story →
+                    </a>
+
+                    <!-- STATS ROW -->
+                    <div class="row g-3 mt-4">
+                        <div class="col-4">
+                            <div class="story-stat">
+                                <span class="story-stat-number">12+</span>
+                                <span class="story-stat-label">Fragrances</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="story-stat">
+                                <span class="story-stat-number">100%</span>
+                                <span class="story-stat-label">Luxury Grade</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="story-stat">
+                                <span class="story-stat-number">MA</span>
+                                <span class="story-stat-label">Based in Morocco</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMAGE SIDE -->
+                <div class="col-lg-6">
+                    <div class="story-image-block">
+                        <img src="images/about-bg.jpg" alt="Fragranceberg story" />
+                        <div class="story-image-badge">
+                            <strong>Fragranceberg</strong>
+                            Smell Illegally Good
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════
+       FEATURED PRODUCTS
+  ══════════════════════════ -->
+    <section class="products-section" id="products">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <span class="story-label">Collection</span>
+                <h2 class="story-heading" style="margin-bottom:0.5rem;">
+                    Featured <span>Products</span>
+                </h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="section-subtitle">
+                    Handcrafted formulas. Illegal levels of quality.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- PRODUCT 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="images/product-1.jpg" alt="Heisenberg N°1" class="product-card-img" />
+                        <div class="product-card-body">
+                            <p class="product-tag">Signature · Eau de Parfum</p>
+                            <h3 class="product-name">Heisenberg N°1</h3>
+                            <p class="product-desc">Dark woods, smoked oud, and a touch of emerald moss. Power in a
+                                bottle.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399 <span>MAD</span></div>
+                                <button class="btn-add">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="images/product-2.jpg" alt="Crystal Blue" class="product-card-img" />
+                        <div class="product-card-body">
+                            <p class="product-tag">Limited · Eau de Parfum</p>
+                            <h3 class="product-name">Crystal Blue</h3>
+                            <p class="product-desc">Ice-cold bergamot, cedarwood, and white musk. Purity at its most
+                                dangerous.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399<span>MAD</span></div>
+                                <button class="btn-add">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="images/product-3.jpg" alt="Los Pollos" class="product-card-img" />
+                        <div class="product-card-body">
+                            <p class="product-tag">Exclusive · Eau de Parfum</p>
+                            <h3 class="product-name">Los Pollos</h3>
+                            <p class="product-desc">Warm amber, saffron, and aged leather. Business on the surface,
+                                empire beneath.</p>
+                            <div class="product-footer">
+                                <div class="product-price">299<span>MAD</span></div>
+                                <button class="btn-add">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="shop.html" class="btn-primary-brand">View Full Collection</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════
+       REVIEWS — BOOTSTRAP CAROUSEL
+  ══════════════════════════ -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <span class="story-label">Testimonials</span>
+                <h2 class="story-heading" style="margin-bottom:0;">
+                    What They <span>Say</span>
+                </h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+
+            <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0"
+                        class="active"></button>
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <div class="review-card">
+                            <div class="review-stars">★ ★ ★ ★ ★</div>
+                            <p class="review-text">
+                                "I wore Heisenberg N°1 to a meeting and closed the deal before I even spoke.
+                                This isn't a fragrance — it's a negotiation tactic."
+                            </p>
+                            <div class="review-author">Youssef A.</div>
+                            <div class="review-location">Casablanca, Morocco</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="review-card">
+                            <div class="review-stars">★ ★ ★ ★ ★</div>
+                            <p class="review-text">
+                                "Crystal Blue is the most unique scent I have ever experienced.
+                                Cold, sharp, and unforgettable. I get asked about it everywhere I go."
+                            </p>
+                            <div class="review-author">Sara M.</div>
+                            <div class="review-location">Rabat, Morocco</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="review-card">
+                            <div class="review-stars">★ ★ ★ ★ ★</div>
+                            <p class="review-text">
+                                "Los Pollos smells like success. Warm, powerful, and completely addictive.
+                                Fragranceberg understands luxury at a different level."
+                            </p>
+                            <div class="review-author">Karim B.</div>
+                            <div class="review-location">Marrakech, Morocco</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════
+       FOOTER
+  ══════════════════════════ -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-brand-name">Fragrance<span>berg</span></div>
+                    <div class="footer-tagline">Smell Illegally Good</div>
+                    <p style="font-size:0.82rem; color:#444444; max-width:280px; line-height:1.7;">
+                        A luxury fragrance brand born from chemistry and ambition.
+                        Morocco's boldest scent house.
+                    </p>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="footer-col-title">Navigation</div>
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="shop.html" class="footer-link">Shop</a>
+                    <a href="about.html" class="footer-link">About</a>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="footer-col-title">Collection</div>
+                    <a href="shop.html" class="footer-link">Heisenberg N°1</a>
+                    <a href="shop.html" class="footer-link">Crystal Blue</a>
+                    <a href="shop.html" class="footer-link">Los Pollos</a>
+                    <a href="shop.html" class="footer-link">View All →</a>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="footer-col-title">Contact</div>
+                    <a href="contact.html" class="footer-link">fragranceberg@gmail.com</a>
+                    <a href="contact.html" class="footer-link">Instagram · @fragranceberg</a>
+                    <a href="contact.html" class="footer-link">Casablanca, Morocco</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 <span>Fragranceberg</span> · All rights reserved ·
+                Smell Illegally Good
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

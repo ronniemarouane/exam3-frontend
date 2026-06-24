@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fragranceberg — Shop</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+
+        /* ── NAVBAR (same as home) ── */
+        .navbar-custom {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #1B5E20;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-brand-text span {
+            color: #4ade80;
+        }
+
+        .nav-link {
+            color: #aaaaaa !important;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #4ade80 !important;
+        }
+
+        .navbar-toggler {
+            border-color: #1B5E20;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%284, 222, 128, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .btn-primary-brand {
+            background: #1B5E20;
+            color: #f0f0f0;
+            border: 1px solid #2E7D32;
+            padding: 0.85rem 2.2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary-brand:hover {
+            background: #2E7D32;
+            color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(27, 94, 32, 0.4);
+        }
+
+        /* ── SHOP HERO ── */
+        .shop-hero {
+            padding-top: 120px;
+            padding-bottom: 5rem;
+            background: linear-gradient(180deg, #0d1f0e 0%, #0a0a0a 100%);
+            text-align: center;
+            border-bottom: 1px solid #111111;
+        }
+
+        .shop-hero-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .shop-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 1rem;
+        }
+
+        .shop-hero-title span {
+            color: #4ade80;
+        }
+
+        .shop-hero-desc {
+            font-size: 0.95rem;
+            color: #666666;
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            padding: 2.5rem 0;
+            background: #0d0d0d;
+            border-bottom: 1px solid #111111;
+            position: sticky;
+            top: 73px;
+            z-index: 100;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: #666666;
+            border: 1px solid #1a1a1a;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #1B5E20;
+            color: #f0f0f0;
+            border-color: #1B5E20;
+        }
+
+        /* ── PRODUCTS GRID ── */
+        .shop-grid-section {
+            padding: 5rem 0;
+        }
+
+        .product-card {
+            background: #111111;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            border-color: #1B5E20;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.88);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-card-img {
+            filter: brightness(1);
+            transform: scale(1.03);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #1B5E20;
+            color: #f0f0f0;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        .product-card-body {
+            padding: 1.5rem;
+        }
+
+        .product-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-desc {
+            font-size: 0.82rem;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.25rem;
+            color: #f0f0f0;
+        }
+
+        .product-price span {
+            font-size: 0.75rem;
+            color: #555555;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-view {
+            background: transparent;
+            border: 1px solid #1B5E20;
+            color: #4ade80;
+            padding: 0.45rem 1rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background: #1B5E20;
+            color: #f0f0f0;
+        }
+
+        /* ── MODAL ── */
+        .modal-content {
+            background: #111111;
+            border: 1px solid #1B5E20;
+            border-radius: 4px;
+            color: #f0f0f0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #1a1a1a;
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #f0f0f0;
+        }
+
+        .btn-close {
+            filter: invert(1) brightness(0.6);
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            filter: brightness(0.85);
+        }
+
+        .modal-body-content {
+            padding: 1.5rem;
+        }
+
+        .modal-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            color: #888888;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-notes-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-note-pill {
+            display: inline-block;
+            background: #0d1f0e;
+            border: 1px solid #1B5E20;
+            color: #86efac;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            margin: 0.2rem;
+        }
+
+        .modal-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .modal-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #f0f0f0;
+        }
+
+        .modal-price span {
+            font-size: 0.85rem;
+            color: #555;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #1a1a1a;
+            padding: 1rem 1.5rem;
+            background: #0d0d0d;
+        }
+
+        /* ── FOOTER ── */
+        .footer-main {
+            background: #080808;
+            border-top: 1px solid #1B5E20;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand-name span {
+            color: #4ade80;
+        }
+
+        .footer-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4a7c59;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            display: block;
+            font-size: 0.85rem;
+            color: #666666;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #4ade80;
+        }
+
+        .footer-col-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #f0f0f0;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #111111;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #333333;
+        }
+
+        .footer-bottom span {
+            color: #4ade80;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .delay-2 {
+            animation-delay: 0.25s;
+            opacity: 0;
+        }
+
+        .delay-3 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════
+       NAVBAR
+  ══════════════════════════ -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-text" href="home.html">
+                Fragrance<span>berg</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn-primary-brand" href="shop.html"
+                            style="padding:0.6rem 1.4rem; font-size:0.75rem;">Shop Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ══════════════════════════
+       SHOP HERO
+  ══════════════════════════ -->
+    <section class="shop-hero">
+        <span class="shop-hero-label fade-in-up delay-1">The Collection</span>
+        <h1 class="shop-hero-title fade-in-up delay-2">
+            Shop <span>Fragranceberg</span>
+        </h1>
+        <p class="shop-hero-desc fade-in-up delay-3">
+            Six formulas. Each one engineered to leave a mark.
+            Choose your weapon.
+        </p>
+    </section>
+
+
+    <!-- ══════════════════════════
+       FILTER BAR
+  ══════════════════════════ -->
+    <div class="filter-bar">
+        <div class="container text-center">
+            <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+            <button class="filter-btn" onclick="filterProducts('signature', this)">Signature</button>
+            <button class="filter-btn" onclick="filterProducts('limited', this)">Limited</button>
+            <button class="filter-btn" onclick="filterProducts('exclusive', this)">Exclusive</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════
+       PRODUCTS GRID
+  ══════════════════════════ -->
+    <section class="shop-grid-section">
+        <div class="container">
+            <div class="row g-4" id="productsGrid">
+
+                <!-- PRODUCT 1 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="signature">
+                    <div class="product-card" onclick="openModal('modal1')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-1.jpg" alt="Heisenberg N°1" class="product-card-img" />
+                            <span class="product-badge">Signature</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Eau de Parfum · 100ml</p>
+                            <h3 class="product-name">Heisenberg N°1</h3>
+                            <p class="product-desc">Dark woods, smoked oud, and a touch of emerald moss. Power in a
+                                bottle.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399 <span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="limited">
+                    <div class="product-card" onclick="openModal('modal2')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-2.jpg" alt="Crystal Blue" class="product-card-img" />
+                            <span class="product-badge">Limited</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Eau de Parfum · 75ml</p>
+                            <h3 class="product-name">Crystal Blue</h3>
+                            <p class="product-desc">Ice-cold bergamot, cedarwood, and white musk. Purity at its most
+                                dangerous.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399 <span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal3')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-3.jpg" alt="Los Pollos" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Eau de Parfum · 100ml</p>
+                            <h3 class="product-name">Los Pollos</h3>
+                            <p class="product-desc">Warm amber, saffron, and aged leather. Business on the surface,
+                                empire beneath.</p>
+                            <div class="product-footer">
+                                <div class="product-price">299<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 4 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="signature">
+                    <div class="product-card" onclick="openModal('modal4')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-4.jpg" alt="The Cook" class="product-card-img" />
+                            <span class="product-badge">Signature</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Eau de Parfum · 100ml</p>
+                            <h3 class="product-name">The Cook</h3>
+                            <p class="product-desc">Raw vetiver, black pepper, and sandalwood. The scent of someone who
+                                knows exactly what they are doing.</p>
+                            <div class="product-footer">
+                                <div class="product-price">229<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 5 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="limited">
+                    <div class="product-card" onclick="openModal('modal5')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-5.jpg" alt="Saul's Choice" class="product-card-img" />
+                            <span class="product-badge">Limited</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Eau de Toilette · 50ml</p>
+                            <h3 class="product-name">Saul's Choice</h3>
+                            <p class="product-desc">Citrus, green tea, and a base of clean musk. Sharp, confident,
+                                always in control.</p>
+                            <div class="product-footer">
+                                <div class="product-price">229<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 6 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal6')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-6.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PRODUCT 7 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal7')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-7.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">299<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 8 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal8')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-8.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">515<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT 9 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal9')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-9.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">229<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT 10 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal10')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-10.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">299<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PRODUCT 11 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal11')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-11.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">250<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT 12 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal12')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-12.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">529<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT 13 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal13')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-13.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">399<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT 14 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="exclusive">
+                    <div class="product-card" onclick="openModal('modal14')">
+                        <div class="product-card-img-wrap">
+                            <img src="images/product-14.jpg" alt="Fring's Empire" class="product-card-img" />
+                            <span class="product-badge">Exclusive</span>
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-tag">Extrait de Parfum · 50ml</p>
+                            <h3 class="product-name">Fring's Empire</h3>
+                            <p class="product-desc">Smoked rose, oud, and dark patchouli. For those who build quietly
+                                and strike precisely.</p>
+                            <div class="product-footer">
+                                <div class="product-price">299<span>MAD</span></div>
+                                <button class="btn-view">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- ══════════════════════════
+       BOOTSTRAP MODALS
+  ══════════════════════════ -->
+
+    <!-- MODAL 1 — Heisenberg N°1 -->
+    <div class="modal fade" id="modal1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Heisenberg N°1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-1.jpg" alt="Heisenberg N°1" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Signature · Eau de Parfum · 100ml</p>
+                        <p class="modal-desc">
+                            Named after the man who became a legend. Heisenberg N°1 opens with
+                            dark smoked oud and aged cedarwood, evolving into a heart of
+                            emerald moss and black amber. The drydown is pure power — warm,
+                            animalic, unforgettable.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Smoked Oud</span>
+                        <span class="modal-note-pill">Dark Cedar</span>
+                        <span class="modal-note-pill">Emerald Moss</span>
+                        <span class="modal-note-pill">Black Amber</span>
+                        <span class="modal-note-pill">Musk</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">450 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2 — Crystal Blue -->
+    <div class="modal fade" id="modal2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crystal Blue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-2.jpg" alt="Crystal Blue" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Limited · Eau de Parfum · 75ml</p>
+                        <p class="modal-desc">
+                            Cold, precise, and dangerously pure. Crystal Blue opens with frozen
+                            bergamot and icy aquatic notes, blooming into a heart of
+                            cedarwood and white iris. The base is pure white musk — clean
+                            enough to be innocent, bold enough to be remembered.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Frozen Bergamot</span>
+                        <span class="modal-note-pill">Aquatic</span>
+                        <span class="modal-note-pill">White Iris</span>
+                        <span class="modal-note-pill">Cedarwood</span>
+                        <span class="modal-note-pill">White Musk</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">520 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3 — Los Pollos -->
+    <div class="modal fade" id="modal3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Los Pollos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-3.jpg" alt="Los Pollos" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Exclusive · Eau de Parfum · 100ml</p>
+                        <p class="modal-desc">
+                            The scent of a man who runs an empire with a smile. Los Pollos
+                            opens with warm saffron and cardamom spice, transitioning into
+                            rich aged leather and smoked wood. The finish is deep amber —
+                            luxurious, commanding, impossible to forget.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Saffron</span>
+                        <span class="modal-note-pill">Cardamom</span>
+                        <span class="modal-note-pill">Aged Leather</span>
+                        <span class="modal-note-pill">Smoked Wood</span>
+                        <span class="modal-note-pill">Dark Amber</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">480 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4 — The Cook -->
+    <div class="modal fade" id="modal4" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">The Cook</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-4.jpg" alt="The Cook" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Signature · Eau de Parfum · 100ml</p>
+                        <p class="modal-desc">
+                            For those who know their craft at the deepest level. The Cook
+                            opens with raw vetiver and black pepper, a dry and focused opening
+                            that demands attention. The heart is pure sandalwood and
+                            tonka bean — warm, precise, masterful.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Raw Vetiver</span>
+                        <span class="modal-note-pill">Black Pepper</span>
+                        <span class="modal-note-pill">Sandalwood</span>
+                        <span class="modal-note-pill">Tonka Bean</span>
+                        <span class="modal-note-pill">Grey Musk</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">430 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5 — Saul's Choice -->
+    <div class="modal fade" id="modal5" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Saul's Choice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-5.jpg" alt="Saul's Choice" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Limited · Eau de Toilette · 50ml</p>
+                        <p class="modal-desc">
+                            Always sharp, always confident, always in the room when it matters.
+                            Saul's Choice opens with bright citrus and sparkling green tea,
+                            moving into a heart of clean linen and light woods. Fresh,
+                            intelligent, always one step ahead.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Bright Citrus</span>
+                        <span class="modal-note-pill">Green Tea</span>
+                        <span class="modal-note-pill">Clean Linen</span>
+                        <span class="modal-note-pill">Light Woods</span>
+                        <span class="modal-note-pill">White Musk</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">380 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6 — Fring's Empire -->
+    <div class="modal fade" id="modal6" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fring's Empire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/product-6.jpg" alt="Fring's Empire" class="modal-img" />
+                    <div class="modal-body-content">
+                        <p class="modal-tag">Exclusive · Extrait de Parfum · 50ml</p>
+                        <p class="modal-desc">
+                            Built in silence. Launched with precision. Fring's Empire opens
+                            with smoked rose and black oud — a contradiction that works
+                            perfectly. The heart is dark patchouli and labdanum.
+                            The drydown is a fortress — rich, enduring, untouchable.
+                        </p>
+                        <p class="modal-notes-title">Scent Notes</p>
+                        <span class="modal-note-pill">Smoked Rose</span>
+                        <span class="modal-note-pill">Black Oud</span>
+                        <span class="modal-note-pill">Dark Patchouli</span>
+                        <span class="modal-note-pill">Labdanum</span>
+                        <span class="modal-note-pill">Ambergris</span>
+                        <div class="modal-price-row">
+                            <div class="modal-price">650 <span>MAD</span></div>
+                            <button class="btn-primary-brand" style="padding:0.65rem 1.5rem; font-size:0.75rem;">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════
+       FOOTER
+  ══════════════════════════ -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-3">
+                    <div class="footer-brand-name">Fragrance<span>berg</span></div>
+                    <div class="footer-tagline">Smell Illegally Good</div>
+                    <p style="font-size:0.82rem; color:#444444; max-width:280px; line-height:1.7;">
+                        A luxury fragrance brand born from chemistry and ambition.
+                        Morocco's boldest scent house.
+                    </p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <div class="footer-col-title">Navigation</div>
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="shop.html" class="footer-link">Shop</a>
+                    <a href="about.html" class="footer-link">About</a>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="footer-col-title">Collection</div>
+                    <a href="#" onclick="openModal('modal1')" class="footer-link">Heisenberg N°1</a>
+                    <a href="#" onclick="openModal('modal2')" class="footer-link">Crystal Blue</a>
+                    <a href="#" onclick="openModal('modal3')" class="footer-link">Los Pollos</a>
+                    <a href="shop.html" class="footer-link">View All →</a>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-col-title">Contact</div>
+                    <a href="contact.html" class="footer-link">fragranceberg@gmail.com</a>
+                    <a href="contact.html" class="footer-link">Instagram · @fragranceberg</a>
+                    <a href="contact.html" class="footer-link">Casablanca, Morocco</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 <span>Fragranceberg</span> · All rights reserved · Smell Illegally Good
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // ── OPEN MODAL FUNCTION ──
+        function openModal(modalId) {
+            var modal = new bootstrap.Modal(document.getElementById(modalId));
+            modal.show();
+        }
+
+        // ── FILTER FUNCTION ──
+        function filterProducts(category, btn) {
+            // update active button
+            document.querySelectorAll('.filter-btn').forEach(function (b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            // show / hide cards
+            document.querySelectorAll('.product-item').forEach(function (item) {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
